@@ -68,3 +68,7 @@ typings/
 
 # CSS minified
 *.min.css
+
+# Image meta files
+._*.gif
+._*.jpg
