@@ -1,9 +1,9 @@
 {
-  "name":"eBabel",
-  "short_name":"ebabel",
+  "name":"Voice Book Search",
+  "short_name":"voice-book-search",
   "start_url":"/",
-  "background_color":"#4a47ff",
-  "theme_color":"#ffd147",
+  "background_color":"#ffffff",
+  "theme_color":"#ffebcd",
   "display":"standalone",
   "icons":[
      {

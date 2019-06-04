@@ -1,7 +1,7 @@
 // Update the cache name version to promote a new set of files to all clients.
 // When a client is closed, next time it opens, the new files will activate
 // if they got installed the previous time the game was installed.
-const cacheName = 'ebabel-cache-1.1.2';
+const cacheName = 'voice-book-search-cache-1.0.0';
 const mutableRequests = [
   'index.html',
   '/',
@@ -14,30 +14,12 @@ const immutableRequests = [
   'favicon.ico',
   'humans.txt',
   'index-offline.html',
-  'react-freelancer-cv.pdf',
   'robots.txt',
   'sitemap.xml',
 
   'https://cdn.ampproject.org/v0.js',
   'https://cdn.ampproject.org/v0/amp-form-0.1.js',
   'https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js',
-  'https://cdn.ampproject.org/v0/amp-analytics-0.1.js',
-
-  'img/capture-aliens.png',
-  'img/enchantment.jpg',
-  'img/guess-my-number.png',
-  'img/html5-icon.png',
-  'img/nov-2018.png',
-  'img/pictologo.png',
-  'img/the-questionables.png',
-
-  'img/hero/sunset.jpg',
-  'img/hero/eye.jpg',
-  'img/hero/canal.jpg',
-
-  'img/hero/sunset-preview.jpg',
-  'img/hero/eye-preview.jpg',
-  'img/hero/canal-preview.jpg',
 
   'img/icons/icon-48x48.png',
   'img/icons/icon-72x72.png',
