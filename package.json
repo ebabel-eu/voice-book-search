@@ -4,8 +4,9 @@
   "description": "Search for books with a voice activated input",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest --coverage && npm run eslint",
     "eslint": "eslint ./src/**/*.ts",
+    "build": "npm run uglifycss",
     "uglifycss": "uglifycss ./src/style.css > ./public/style.min.css"
   },
   "repository": {
@@ -22,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/ebabel-eu/voice-book-search/issues"
   },
-  "homepage": "https://github.com/ebabel-eu/voice-book-search#readme",
+  "homepage": "https://voice-book-search.firebaseapp.com",
   "devDependencies": {
     "@types/jest": "^24.0.13",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
