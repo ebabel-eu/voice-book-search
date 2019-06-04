@@ -1,0 +1,17 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+  Thomas Amar -- Developer -- @ebabel -- hello@ebabel.eu
+
+# THANKS
+
+  Google for developing AMP and offering to all for free.
+
+# TECHNOLOGY COLOPHON
+
+  AMP-HTML
+  Web Components
+  Service Worker
+  Voice

@@ -59,3 +59,12 @@ typings/
 
 # next.js build output
 .next
+
+# Firebase
+.firebase/
+
+# PDF documents
+*.pdf
+
+# CSS minified
+*.min.css

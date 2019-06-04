@@ -1,0 +1,79 @@
+<!doctype html>
+<html amp lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Voice Book Search</title>
+
+    <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <link rel="manifest" href="/manifest.json">
+
+    <link rel="canonical" href="https://voice-book-search.firebaseapp.com">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="theme-color" content="#ffebcd">
+
+    <meta name="description" content="Search for books with a voice activated input">
+    <meta name="keywords" content="amp-html, web-components, service-worker, voice">
+
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
+    <link rel="shortcut icon" href="/img/icons/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="48x48" href="/img/icons/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/icons/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/img/icons/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/img/icons/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/img/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="256x256" href="/img/icons/icon-256x256.png">
+    <link rel="apple-touch-icon" sizes="384x384" href="/img/icons/icon-384x384.png">
+    <link rel="apple-touch-icon" sizes="512x512" href="/img/icons/icon-512x512.png">
+
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+    <script async custom-element="amp-install-serviceworker" src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js"></script>
+
+    <style amp-custom>
+      /* todo: add custom css here */
+    </style>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Webpage",
+        "url": "https://voice-book-search.firebaseapp.com",
+        "name": "Thomas Amar",
+        "headline": "Voice activated book search",
+        "description": "Search for books with a voice activated input",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://voice-book-search.firebaseapp.com"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "eBabel",
+          "logo": {
+            "url": "https://voice-book-search.firebaseapp.com/img/icons/icon-512x512.png",
+            "width": 512,
+            "height": 512,
+            "@type": "ImageObject"
+          }
+        },
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://voice-book-search.firebaseapp.com/img/icons/icon-512x512.png",
+          "width": 512,
+          "height": 512
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form action="">
+      <input type="search">
+    </form>
+
+    <amp-install-serviceworker src="/sw.js" layout="nodisplay"></amp-install-serviceworker>
+  </body>
+</html>

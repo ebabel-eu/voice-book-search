@@ -1,0 +1,38 @@
+{
+  "name": "voice-book-search",
+  "version": "1.0.0",
+  "description": "Search for books with a voice activated input",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "eslint": "eslint ./src/**/*.ts",
+    "uglifycss": "uglifycss ./src/style.css > ./public/style.min.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ebabel-eu/voice-book-search.git"
+  },
+  "keywords": [
+    "amp-html",
+    "voice-as-an-interface",
+    "web-components"
+  ],
+  "author": "Thomas Amar <hello@ebabel.eu>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ebabel-eu/voice-book-search/issues"
+  },
+  "homepage": "https://github.com/ebabel-eu/voice-book-search#readme",
+  "devDependencies": {
+    "@types/jest": "^24.0.13",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
+    "@typescript-eslint/parser": "^1.9.0",
+    "acorn": "^6.1.1",
+    "acorn-jsx": "^5.0.1",
+    "eslint": "^5.16.0",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.1",
+    "uglifycss": "0.0.29"
+  }
+}
