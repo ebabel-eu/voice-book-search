@@ -1,47 +1,26 @@
-interface countryCodes {};
-const langs: countryCodes[] =
-[
-  ['English',         ['en-AU', 'Australia'],
-                      ['en-CA', 'Canada'],
-                      ['en-IN', 'India'],
-                      ['en-NZ', 'New Zealand'],
-                      ['en-ZA', 'South Africa'],
-                      ['en-GB', 'United Kingdom'],
-                      ['en-US', 'United States']],
-  ['Español',         ['es-AR', 'Argentina'],
-                      ['es-BO', 'Bolivia'],
-                      ['es-CL', 'Chile'],
-                      ['es-CO', 'Colombia'],
-                      ['es-CR', 'Costa Rica'],
-                      ['es-EC', 'Ecuador'],
-                      ['es-SV', 'El Salvador'],
-                      ['es-ES', 'España'],
-                      ['es-US', 'Estados Unidos'],
-                      ['es-GT', 'Guatemala'],
-                      ['es-HN', 'Honduras'],
-                      ['es-MX', 'México'],
-                      ['es-NI', 'Nicaragua'],
-                      ['es-PA', 'Panamá'],
-                      ['es-PY', 'Paraguay'],
-                      ['es-PE', 'Perú'],
-                      ['es-PR', 'Puerto Rico'],
-                      ['es-DO', 'República Dominicana'],
-                      ['es-UY', 'Uruguay'],
-                      ['es-VE', 'Venezuela']],
-  ['Italiano',        ['it-IT', 'Italia'],
-                      ['it-CH', 'Svizzera']],
-  ['Français',        ['fr-FR']],
-  ['Deutsch',         ['de-DE']],
-  ['Nederlands',      ['nl-NL']],
-];
+const select_language = document.getElementById('select_language') as HTMLSelectElement;
+const select_dialect = document.getElementById('select_dialect') as HTMLSelectElement;
+const start_button = document.getElementById('start_button') as HTMLButtonElement;
+const info = document.getElementById('info') as HTMLDivElement;
+const start_img: HTMLImageElement = document.getElementById('start_img') as HTMLImageElement;
 
-const emptyElement = {
-  style: {
-    display: '',
-  },
-};
-const select_language = document.getElementById('select_language') || emptyElement;
-const start_button = document.getElementById('start_button') || emptyElement;
+const showInfo: (s: string) => void = (s: string) => {
+  if (s) {
+    for (let child: HTMLElement = info.firstChild as HTMLElement; child; child = child.nextSibling as HTMLElement) {
+      if (child.style) {
+        child.style.display = child.id == s ? 'inline' : 'none';
+      }
+    }
+    info.style.visibility = 'visible';
+  } else {
+    info.style.visibility = 'hidden';
+  }
+}
+
+const upgrade: () => void = () => {
+  start_button.style.visibility = 'hidden';
+  showInfo('info_upgrade');
+}
 
 showInfo('info_start');
 
@@ -49,21 +28,22 @@ let final_transcript: string = '';
 let recognizing: boolean = false;
 let ignore_onend: boolean;
 let start_timestamp: number;
+let recognition: SpeechRecognition;
 if (!('webkitSpeechRecognition' in window)) {
   upgrade();
 } else {
   start_button.style.display = 'inline-block';
-  const recognition = new window.webkitSpeechRecognition();
+  recognition = new SpeechRecognition();
   recognition.continuous = true;
   recognition.interimResults = true;
 
-  recognition.onstart = function() {
+  recognition.onstart = () => {
     recognizing = true;
     showInfo('info_speak_now');
     start_img.src = 'img/microphone/mic-animate.gif';
   };
 
-  recognition.onerror = function(event) {
+  recognition.onerror = (event: SpeechRecognitionError) => {
     if (event.error == 'no-speech') {
       start_img.src = 'img/microphone/mic.gif';
       showInfo('info_no_speech');
@@ -84,7 +64,7 @@ if (!('webkitSpeechRecognition' in window)) {
     }
   };
 
-  recognition.onend = function() {
+  recognition.onend = () => {
     recognizing = false;
     if (ignore_onend) {
       return;
@@ -95,17 +75,11 @@ if (!('webkitSpeechRecognition' in window)) {
       return;
     }
     showInfo('');
-    if (window.getSelection) {
-      window.getSelection().removeAllRanges();
-      var range = document.createRange();
-      range.selectNode(document.getElementById('final_span'));
-      window.getSelection().addRange(range);
-    }
   };
 
-  recognition.onresult = function(event) {
-    var interim_transcript = '';
-    for (var i = event.resultIndex; i < event.results.length; ++i) {
+  recognition.onresult = (event) => {
+    let interim_transcript: string = '';
+    for (let i: number = event.resultIndex; i < event.results.length; ++i) {
       if (event.results[i].isFinal) {
         final_transcript += event.results[i][0].transcript;
       } else {
@@ -113,31 +87,20 @@ if (!('webkitSpeechRecognition' in window)) {
       }
     }
     final_transcript = capitalize(final_transcript);
-    final_span.innerHTML = linebreak(final_transcript);
-    interim_span.innerHTML = linebreak(interim_transcript);
     if (final_transcript || interim_transcript) {
       showButtons('inline-block');
     }
   };
 }
 
-function upgrade() {
-  start_button.style.visibility = 'hidden';
-  showInfo('info_upgrade');
-}
+const two_line: RegExp = /\n\n/g;
+const one_line: RegExp = /\n/g;
+const linebreak: (s: string) => string = (s: string) => s.replace(two_line, '<p></p>').replace(one_line, '<br>');
 
-var two_line = /\n\n/g;
-var one_line = /\n/g;
-function linebreak(s) {
-  return s.replace(two_line, '<p></p>').replace(one_line, '<br>');
-}
+const first_char: RegExp = /\S/;
+const capitalize: (s: string) => string = (s: string) => s.replace(first_char, function(m: string) { return m.toUpperCase(); });
 
-var first_char = /\S/;
-function capitalize(s) {
-  return s.replace(first_char, function(m) { return m.toUpperCase(); });
-}
-
-function startButton(event) {
+const startButton: (event: Event) => void = (event: Event) => {
   if (recognizing) {
     recognition.stop();
     return;
@@ -146,25 +109,10 @@ function startButton(event) {
   recognition.lang = select_dialect.value;
   recognition.start();
   ignore_onend = false;
-  final_span.innerHTML = '';
-  interim_span.innerHTML = '';
   start_img.src = 'img/microphone/mic-slash.gif';
   showInfo('info_allow');
   showButtons('none');
   start_timestamp = event.timeStamp;
-}
-
-function showInfo(s: string) {
-  if (s) {
-    for (var child = info.firstChild; child; child = child.nextSibling) {
-      if (child.style) {
-        child.style.display = child.id == s ? 'inline' : 'none';
-      }
-    }
-    info.style.visibility = 'visible';
-  } else {
-    info.style.visibility = 'hidden';
-  }
 }
 
 let current_style: string;
@@ -174,3 +122,5 @@ const showButtons = (style: string): void => {
   }
   current_style = style;
 };
+
+start_button.addEventListener('click', startButton);

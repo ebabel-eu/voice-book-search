@@ -9,7 +9,7 @@
     "build": "npm run typescript && npm run uglifycss && npm run uglifyjs",
     "typescript": "tsc -p tsconfig.json",
     "uglifycss": "uglifycss ./src/style.css > ./public/style.min.css",
-    "uglifyjs": "uglifyjs ./public/bundle.js -o ./public/bundle.min.js -c -m"
+    "uglifyjs": "uglifyjs ./public/main.js -o ./public/main.min.js -c -m"
   },
   "repository": {
     "type": "git",
