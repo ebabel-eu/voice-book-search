@@ -71,7 +71,7 @@
       }
     </script>
     <script>
-      var HelloWorld=function(e){this.message=e},hiDave=new HelloWorld("Hi Dave");console.log("The message is "+hiDave.message+".");
+      for(var langs=[["Afrikaans",["af-ZA"]],["Bahasa Indonesia",["id-ID"]],["Bahasa Melayu",["ms-MY"]],["Català",["ca-ES"]],["Čeština",["cs-CZ"]],["Deutsch",["de-DE"]],["English",["en-AU","Australia"],["en-CA","Canada"],["en-IN","India"],["en-NZ","New Zealand"],["en-ZA","South Africa"],["en-GB","United Kingdom"],["en-US","United States"]],["Español",["es-AR","Argentina"],["es-BO","Bolivia"],["es-CL","Chile"],["es-CO","Colombia"],["es-CR","Costa Rica"],["es-EC","Ecuador"],["es-SV","El Salvador"],["es-ES","España"],["es-US","Estados Unidos"],["es-GT","Guatemala"],["es-HN","Honduras"],["es-MX","México"],["es-NI","Nicaragua"],["es-PA","Panamá"],["es-PY","Paraguay"],["es-PE","Perú"],["es-PR","Puerto Rico"],["es-DO","República Dominicana"],["es-UY","Uruguay"],["es-VE","Venezuela"]],["Euskara",["eu-ES"]],["Français",["fr-FR"]],["Galego",["gl-ES"]],["Hrvatski",["hr_HR"]],["IsiZulu",["zu-ZA"]],["Íslenska",["is-IS"]],["Italiano",["it-IT","Italia"],["it-CH","Svizzera"]],["Magyar",["hu-HU"]],["Nederlands",["nl-NL"]],["Norsk bokmål",["nb-NO"]],["Polski",["pl-PL"]],["Português",["pt-BR","Brasil"],["pt-PT","Portugal"]],["Română",["ro-RO"]],["Slovenčina",["sk-SK"]],["Suomi",["fi-FI"]],["Svenska",["sv-SE"]],["Türkçe",["tr-TR"]],["български",["bg-BG"]],["Pусский",["ru-RU"]],["Српски",["sr-RS"]],["한국어",["ko-KR"]],["中文",["cmn-Hans-CN","普通话 (中国大陆)"],["cmn-Hans-HK","普通话 (香港)"],["cmn-Hant-TW","中文 (台灣)"],["yue-Hant-HK","粵語 (香港)"]],["日本語",["ja-JP"]],["Lingua latīna",["la"]]],i=0;i<langs.length;i++)select_language.options[i]=new Option(langs[i][0],i);function updateCountry(){for(var n=select_dialect.options.length-1;0<=n;n--)select_dialect.remove(n);var e=langs[select_language.selectedIndex];for(n=1;n<e.length;n++)select_dialect.options.add(new Option(e[n][1],e[n][0]));select_dialect.style.visibility=1==e[1].length?"hidden":"visible"}select_language.selectedIndex=6,updateCountry(),select_dialect.selectedIndex=6,showInfo("info_start");var ignore_onend,start_timestamp,create_email=!1,final_transcript="",recognizing=!1;if("webkitSpeechRecognition"in window){start_button.style.display="inline-block";var recognition=new webkitSpeechRecognition;recognition.continuous=!0,recognition.interimResults=!0,recognition.onstart=function(){recognizing=!0,showInfo("info_speak_now"),start_img.src="img/microphone/mic-animate.gif"},recognition.onerror=function(n){"no-speech"==n.error&&(start_img.src="img/microphone/mic.gif",showInfo("info_no_speech"),ignore_onend=!0),"audio-capture"==n.error&&(start_img.src="img/microphone/mic.gif",showInfo("info_no_microphone"),ignore_onend=!0),"not-allowed"==n.error&&(n.timeStamp-start_timestamp<100?showInfo("info_blocked"):showInfo("info_denied"),ignore_onend=!0)},recognition.onend=function(){if(recognizing=!1,!ignore_onend)if(start_img.src="img/microphone/mic.gif",final_transcript){if(showInfo(""),window.getSelection){window.getSelection().removeAllRanges();var n=document.createRange();n.selectNode(document.getElementById("final_span")),window.getSelection().addRange(n)}create_email&&(create_email=!1,createEmail())}else showInfo("info_start")},recognition.onresult=function(n){for(var e="",i=n.resultIndex;i<n.results.length;++i)n.results[i].isFinal?final_transcript+=n.results[i][0].transcript:e+=n.results[i][0].transcript;final_transcript=capitalize(final_transcript),final_span.innerHTML=linebreak(final_transcript),interim_span.innerHTML=linebreak(e),(final_transcript||e)&&showButtons("inline-block")}}else upgrade();function upgrade(){start_button.style.visibility="hidden",showInfo("info_upgrade")}var two_line=/\n\n/g,one_line=/\n/g;function linebreak(n){return n.replace(two_line,"<p></p>").replace(one_line,"<br>")}var current_style,first_char=/\S/;function capitalize(n){return n.replace(first_char,function(n){return n.toUpperCase()})}function createEmail(){var n=final_transcript.indexOf("\n");(n<0||80<=n)&&(n=40+final_transcript.substring(40).indexOf(" "));var e=encodeURI(final_transcript.substring(0,n)),i=encodeURI(final_transcript.substring(n+1));window.location.href="mailto:?subject="+e+"&body="+i}function copyButton(){recognizing&&(recognizing=!1,recognition.stop()),copy_button.style.display="none",copy_info.style.display="inline-block",showInfo("")}function emailButton(){recognizing?(recognizing=!(create_email=!0),recognition.stop()):createEmail(),email_button.style.display="none",email_info.style.display="inline-block",showInfo("")}function startButton(n){recognizing?recognition.stop():(final_transcript="",recognition.lang=select_dialect.value,recognition.start(),ignore_onend=!1,final_span.innerHTML="",interim_span.innerHTML="",start_img.src="img/microphone/mic-slash.gif",showInfo("info_allow"),showButtons("none"),start_timestamp=n.timeStamp)}function showInfo(n){if(n){for(var e=info.firstChild;e;e=e.nextSibling)e.style&&(e.style.display=e.id==n?"inline":"none");info.style.visibility="visible"}else info.style.visibility="hidden"}function showButtons(n){n!=current_style&&(current_style=n,copy_button.style.display=n,email_button.style.display=n,copy_info.style.display="none",email_info.style.display="none")}
     </script>
   </head>
   <body>
@@ -110,6 +110,53 @@
         <amp-img src="img/microphone/mic.gif" width="50" height="50" alt="Microphone button">
         </amp-img>
       </button>
+
+      <button id="start_button" onclick="startButton(event)">
+        <img id="start_img" src="img/microphone/mic.gif" alt="Start">
+      </button>
+
+      <div id="div_language">
+        <select id="select_language" onchange="updateCountry()">
+          <option value="6">English</option>
+          <option value="7">Español</option>
+          <option value="14">Italiano</option>
+          <option value="5">Deutsch</option>
+          <option value="9">Français</option>
+          <option value="16">Nederlands</option>
+        </select>
+        &nbsp;&nbsp;
+        <select id="select_dialect">
+          <option value="en-AU">Australia</option>
+          <option value="en-CA">Canada</option>
+          <option value="en-IN">India</option>
+          <option value="en-NZ">New Zealand</option>
+          <option value="en-ZA">South Africa</option>
+          <option value="en-GB">United Kingdom</option>
+          <option value="en-US">United States</option>
+          <option value="es-AR">Argentina</option>
+          <option value="es-BO">Bolivia</option>
+          <option value="es-CL">Chile</option>
+          <option value="es-CO">Colombia</option>
+          <option value="es-CR">Costa Rica</option>
+          <option value="es-EC">Ecuador</option>
+          <option value="es-SV">El Salvador</option>
+          <option value="es-ES">España</option>
+          <option value="es-US">Estados Unidos</option>
+          <option value="es-GT">Guatemala</option>
+          <option value="es-HN">Honduras</option>
+          <option value="es-MX">México</option>
+          <option value="es-NI">Nicaragua</option>
+          <option value="es-PA">Panamá</option>
+          <option value="es-PY">Paraguay</option>
+          <option value="es-PE">Perú</option>
+          <option value="es-PR">Puerto Rico</option>
+          <option value="es-DO">República Dominicana</option>
+          <option value="es-UY">Uruguay</option>
+          <option value="es-VE">Venezuela</option>
+          <option value="it-IT">Italia</option>
+          <option value="it-CH">Svizzera</option>
+        </select>
+      </div>
     </form>
 
     <amp-carousel layout="responsive" width="600" height="265" type="slides" autoplay delay="2000" loop>
