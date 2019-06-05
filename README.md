@@ -1,77 +1,68 @@
-# voice-book-search
-Search for books with a voice activated input
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Development
+## Available Scripts
 
-### Pre-install
-Your local environment relies on [Node.js](https://nodejs.org), and [Firebase](https://firebase.google.com/) (you may need to `sudo` on your machine):
+In the project directory, you can run:
 
-```
-npm install -g firebase-tools
-```
+### `npm start`
 
-Once installed, you may need to login if it's not already done:
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-```
-firebase login
-```
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
 
-If you are in a cloud virtual machine, you might need to run a different login command, and when on another device you have authenticated, paste back into virtual machine the authorozation token:
+### `npm test`
 
-```
-firebase login --no-localhost
-```
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### Install
-To install development environment dependencies:
+### `npm run build`
 
-```
-npm install
-```
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### Build
-The CSS can be minified after `npm install` has been run:
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
 
-```
-npm run build
-```
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Deployment
+### `npm run eject`
 
-### Deploy only hosting
-```
-firebase deploy --only hosting
-```
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-## Technical stack
-This stack is using web native technologies for both desktop and mobile devices:
-- React.js
-- Service Workers
-- Web Components
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Learning resources
-The following pages have been useful in learning how to write the code in this repository:
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-### Web Speech
-- [Webspeech Demo](https://github.com/googlearchive/webplatform-samples/tree/master/webspeechdemo)
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## todo
+## Learn More
 
-### Blockers
-- Search with voice (or plain text in input).
-- Web components (in Typescript).
-- Infinite carousel (no third party dependency, native only).
-- Stop scrolling on blur of page. See event `slideChange` triggered when slide changes. I could check if the page is in focus and allow the slide change, or return false and block the slide change if the page is on blur.
-- Display book covers (-S, -M, or -L) depending on size of viewport.
-- Load images lazily as the carousel scrolls with a small buffer of a few images.
-- Relative time of a moment when the last search query was performed should be updatedautomatically. Display the relative time in a user's preferred language (navigator.language).
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-### Mediun priorities
-- Design
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Low priorities
-- Improve build script, automatically paste custom css into html.
-- Minify the html from src to public.
-- Improve the microphone images (maybe svg).
-- Translate interface based on navigator.language
-- Offer to switch UI language with a menu.
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

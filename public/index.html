@@ -1,135 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Voice Book Search</title>
-    <link rel="manifest" href="/manifest.json">
-    <link rel="canonical" href="https://voice-book-search.firebaseapp.com">
-    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="theme-color" content="#ffebcd">
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
 
-    <meta name="description" content="Search for books with a voice activated input">
-    <meta name="keywords" content="react.js, web-components, service-worker, voice">
-
-    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
-
-    <link rel="shortcut icon" href="/img/icons/icon-48x48.png">
-    <link rel="apple-touch-icon" sizes="48x48" href="/img/icons/icon-48x48.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/img/icons/icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="96x96" href="/img/icons/icon-96x96.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/img/icons/icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="192x192" href="/img/icons/icon-192x192.png">
-    <link rel="apple-touch-icon" sizes="256x256" href="/img/icons/icon-256x256.png">
-    <link rel="apple-touch-icon" sizes="384x384" href="/img/icons/icon-384x384.png">
-    <link rel="apple-touch-icon" sizes="512x512" href="/img/icons/icon-512x512.png">
-
-    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
   </head>
   <body>
-    <header>
-      <h1>Voice Book Search</h1>
-    </header>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
 
-    <div id="info">
-      <p id="info_start" style="display:none">Click on the microphone icon and begin speaking.</p>
-      <p id="info_speak_now" style="display:none">Speak now.</p>
-      <p id="info_no_speech" style="display:none">No speech was detected. You may need to adjust your
-        <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
-          microphone settings</a>.</p>
-      <p id="info_no_microphone" style="display:none">
-        No microphone was found. Ensure that a microphone is installed and that
-        <a href="//support.google.com/chrome/bin/answer.py?hl=en&amp;answer=1407892">
-        microphone settings</a> are configured correctly.</p>
-      <p id="info_allow" style="display:none">Click the "Allow" button above to enable your microphone.</p>
-      <p id="info_denied" style="display:none">Permission to use microphone was denied.</p>
-      <p id="info_blocked" style="display:none">Permission to use microphone is blocked. To change,
-        go to chrome://settings/contentExceptions#media-stream</p>
-      <p id="info_upgrade" style="display:none">Web Speech API is not supported by this browser.
-         Upgrade to <a href="//www.google.com/chrome">Chrome</a>
-         version 25 or later.</p>
-    </div>
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
 
-    <form class="search-form" method="get" target="_top"
-      action="https://openlibrary.org/search.json">
-      <label>
-        Search for
-        <input type="search" name="title" placeholder="Le Petit Prince" required>
-      </label>
-
-      <button type="button" id="start_button">
-        <img id="start_img" src="img/microphone/mic.gif" width="50" height="50" alt="Microphone button">
-      </button>
-
-      <p>
-        <input type="submit" value="Search" />
-      </p>
-
-      <div id="div_language">
-        <select id="select_language">
-          <option value="6">English</option>
-          <option value="7">Español</option>
-          <option value="14">Italiano</option>
-          <option value="5">Deutsch</option>
-          <option value="9">Français</option>
-          <option value="16">Nederlands</option>
-        </select>
-        &nbsp;&nbsp;
-        <select id="select_dialect">
-          <option value="en-AU">Australia</option>
-          <option value="en-CA">Canada</option>
-          <option value="en-IN">India</option>
-          <option value="en-NZ">New Zealand</option>
-          <option value="en-ZA">South Africa</option>
-          <option value="en-GB">United Kingdom</option>
-          <option value="en-US">United States</option>
-          <option value="es-AR">Argentina</option>
-          <option value="es-BO">Bolivia</option>
-          <option value="es-CL">Chile</option>
-          <option value="es-CO">Colombia</option>
-          <option value="es-CR">Costa Rica</option>
-          <option value="es-EC">Ecuador</option>
-          <option value="es-SV">El Salvador</option>
-          <option value="es-ES">España</option>
-          <option value="es-US">Estados Unidos</option>
-          <option value="es-GT">Guatemala</option>
-          <option value="es-HN">Honduras</option>
-          <option value="es-MX">México</option>
-          <option value="es-NI">Nicaragua</option>
-          <option value="es-PA">Panamá</option>
-          <option value="es-PY">Paraguay</option>
-          <option value="es-PE">Perú</option>
-          <option value="es-PR">Puerto Rico</option>
-          <option value="es-DO">República Dominicana</option>
-          <option value="es-UY">Uruguay</option>
-          <option value="es-VE">Venezuela</option>
-          <option value="it-IT">Italia</option>
-          <option value="it-CH">Svizzera</option>
-        </select>
-      </div>
-    </form>
-
-    <img src="https://covers.openlibrary.org/b/id/6627936-M.jpg"
-      width="auto" height="265"
-      alt="Book cover of the heart if a lonely hunter" />
-    <img src="https://covers.openlibrary.org/b/id/97114-M.jpg"
-      width="auto" height="265"
-      alt="Book cover of the heart if a lonely hunter" />
-    <img src="https://covers.openlibrary.org/b/id/6920387-M.jpg"
-      width="auto" height="265"
-      alt="Book cover of the heart if a lonely hunter" />
-    <img src="https://covers.openlibrary.org/b/id/394799-M.jpg"
-      width="auto" height="265"
-      alt="Book cover of the heart if a lonely hunter" />
-    <img src="https://covers.openlibrary.org/b/id/1302957-M.jpg"
-      width="auto" height="265"
-      alt="Book cover of the heart if a lonely hunter" />
-    <img src="https://covers.openlibrary.org/b/id/8327874-M.jpg"
-      width="auto" height="265"
-      alt="Book cover of the heart if a lonely hunter" />
-
-    <script src="/bundle.min.js"></script>
-    <script src="/sw.js"></script>
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
   </body>
 </html>
