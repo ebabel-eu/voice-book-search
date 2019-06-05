@@ -17,13 +17,7 @@ const immutableRequests = [
   'robots.txt',
   'sitemap.xml',
 
-  'https://cdn.ampproject.org/v0.js',
-  'https://cdn.ampproject.org/v0/amp-form-0.1.js',
-  'https://cdn.ampproject.org/v0/amp-mustache-0.2.js',
-  'https://cdn.ampproject.org/v0/amp-carousel-0.1.js',
-  'https://cdn.ampproject.org/rtv/011905292322390/v0/amp-auto-lightbox-0.1.js',
-  'https://cdn.ampproject.org/v0/amp-iframe-0.1.js',
-  'https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js',
+  'bundle.min.js',
 
   'img/icons/icon-48x48.png',
   'img/icons/icon-72x72.png',

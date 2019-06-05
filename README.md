@@ -45,25 +45,12 @@ firebase deploy --only hosting
 
 ## Technical stack
 This stack is using web native technologies for both desktop and mobile devices:
-- AMP-HTML
+- React.js
 - Service Workers
 - Web Components
 
-## Validate AMP
-To check if AMP-HTML is valid, append `#development=1` to the url and check the console.
-
-https://voice-book-search.firebaseapp.com/#development=1
-
 ## Learning resources
 The following pages have been useful in learning how to write the code in this repository:
-
-### AMP-HTML
-- [AMP Boilerplate](https://amp.dev/boilerplate/)
-- [AMP Validation](https://amp.dev/documentation/guides-and-tutorials/learn/validation-workflow/validate_amp)
-- [AMP URL and Code Validator](https://search.google.com/test/amp)
-- [AMP Guides](https://amp.dev/documentation/guides-and-tutorials/start/create/basic_markup?format=websites)
-- [AMP YouTube channel](https://www.youtube.com/watch?v=OO9oKhs80aI&list=PLXTOW_XMsIDQf5mXiTT6MhdYluziN7dwP&index=4)
-- [Create a custom AMP component](https://codelabs.developers.google.com/codelabs/creating-your-first-amp-component/index.html?index=..%2F..index#1)
 
 ### Web Speech
 - [Webspeech Demo](https://github.com/googlearchive/webplatform-samples/tree/master/webspeechdemo)

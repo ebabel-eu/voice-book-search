@@ -7,11 +7,10 @@
 
 # THANKS
 
-  Google for developing AMP and offering to all for free.
+  Facebook for developing React.js and offering to all for free.
 
 # TECHNOLOGY COLOPHON
 
-  AMP-HTML
-  Web Components
+  React.js Components
   Service Worker
   Voice

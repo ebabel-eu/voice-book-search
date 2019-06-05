@@ -1,11 +1,8 @@
 <!doctype html>
-<html amp lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Voice Book Search</title>
-
-    <link rel="preload" as="script" href="https://cdn.ampproject.org/v0.js">
-    <script async src="https://cdn.ampproject.org/v0.js"></script>
 
     <link rel="manifest" href="/manifest.json">
 
@@ -16,7 +13,7 @@
     <meta name="theme-color" content="#ffebcd">
 
     <meta name="description" content="Search for books with a voice activated input">
-    <meta name="keywords" content="amp-html, web-components, service-worker, voice">
+    <meta name="keywords" content="react.js, web-components, service-worker, voice">
 
     <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
@@ -29,47 +26,6 @@
     <link rel="apple-touch-icon" sizes="256x256" href="/img/icons/icon-256x256.png">
     <link rel="apple-touch-icon" sizes="384x384" href="/img/icons/icon-384x384.png">
     <link rel="apple-touch-icon" sizes="512x512" href="/img/icons/icon-512x512.png">
-
-    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
-    <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
-    <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
-    <script async custom-element="amp-install-serviceworker" src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js"></script>
-
-    <style amp-custom>
-      *{font-family:Verdana,Arial,sans-serif}a:link{color:#000;text-decoration:none}a:visited{color:#000}a:hover{color:#33F}.button{background:-webkit-linear-gradient(top,#008dfd 0,#0370ea 100%);border:1px solid #076bd2;border-radius:3px;color:#fff;display:none;font-size:13px;font-weight:bold;line-height:1.3;padding:8px 25px;text-align:center;text-shadow:1px 1px 1px #076bd2;letter-spacing:normal}.center{padding:10px;text-align:center}.final{color:black;padding-right:3px}.interim{color:gray}.info{font-size:14px;text-align:center;color:#777;display:none}.right{float:right}.sidebyside{display:inline-block;width:45%;min-height:40px;text-align:left;vertical-align:top}#headline{font-size:40px;font-weight:300}#info{font-size:20px;text-align:center;color:#777;visibility:hidden}#results{font-size:14px;font-weight:bold;border:1px solid #ddd;padding:15px;text-align:left;min-height:150px}#start_button{border:0;background-color:transparent;padding:0}button[type=submit]{border:0;background-color:transparent;padding:0}
-    </style>
-    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-
-    <script type="application/ld+json">
-      {
-        "@context": "http://schema.org",
-        "@type": "Webpage",
-        "url": "https://voice-book-search.firebaseapp.com",
-        "name": "Thomas Amar",
-        "headline": "Voice activated book search",
-        "description": "Search for books with a voice activated input",
-        "mainEntityOfPage": {
-          "@type": "WebPage",
-          "@id": "https://voice-book-search.firebaseapp.com"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "eBabel",
-          "logo": {
-            "url": "https://voice-book-search.firebaseapp.com/img/icons/icon-512x512.png",
-            "width": 512,
-            "height": 512,
-            "@type": "ImageObject"
-          }
-        },
-        "image": {
-          "@type": "ImageObject",
-          "url": "https://voice-book-search.firebaseapp.com/img/icons/icon-512x512.png",
-          "width": 512,
-          "height": 512
-        }
-      }
-    </script>
   </head>
   <body>
     <header>
@@ -103,8 +59,7 @@
       </label>
 
       <button type="button" id="start_button">
-        <amp-img id="start_img" src="img/microphone/mic.gif" width="50" height="50" alt="Microphone button">
-        </amp-img>
+        <img id="start_img" src="img/microphone/mic.gif" width="50" height="50" alt="Microphone button">
       </button>
 
       <p>
@@ -155,37 +110,29 @@
       </div>
     </form>
 
-    <amp-carousel layout="responsive" width="600" height="265" type="slides" autoplay delay="2000" loop>
-      <amp-img src="https://covers.openlibrary.org/b/id/6627936-M.jpg"
-        width="auto" height="265"
-        alt="Book cover of the heart if a lonely hunter">
-      </amp-img>
-      <amp-img src="https://covers.openlibrary.org/b/id/97114-M.jpg"
-        width="auto" height="265"
-        alt="Book cover of the heart if a lonely hunter">
-      </amp-img>
-      <amp-img src="https://covers.openlibrary.org/b/id/6920387-M.jpg"
-        width="auto" height="265"
-        alt="Book cover of the heart if a lonely hunter">
-      </amp-img>
-      <amp-img src="https://covers.openlibrary.org/b/id/394799-M.jpg"
-        width="auto" height="265"
-        alt="Book cover of the heart if a lonely hunter">
-      </amp-img>
-      <amp-img src="https://covers.openlibrary.org/b/id/1302957-M.jpg"
-        width="auto" height="265"
-        alt="Book cover of the heart if a lonely hunter">
-      </amp-img>
-      <amp-img src="https://covers.openlibrary.org/b/id/8327874-M.jpg"
-        width="auto" height="265"
-        alt="Book cover of the heart if a lonely hunter">
-      </amp-img>
-      <amp-img src="https://covers.openlibrary.org/b/id/7586491-M.jpg"
-        width="auto" height="265"
-        alt="Book cover of the heart if a lonely hunter">
-      </amp-img>
-    </amp-carousel>
+    <img src="https://covers.openlibrary.org/b/id/6627936-M.jpg"
+      width="auto" height="265"
+      alt="Book cover of the heart if a lonely hunter" />
+    <img src="https://covers.openlibrary.org/b/id/97114-M.jpg"
+      width="auto" height="265"
+      alt="Book cover of the heart if a lonely hunter" />
+    <img src="https://covers.openlibrary.org/b/id/6920387-M.jpg"
+      width="auto" height="265"
+      alt="Book cover of the heart if a lonely hunter" />
+    <img src="https://covers.openlibrary.org/b/id/394799-M.jpg"
+      width="auto" height="265"
+      alt="Book cover of the heart if a lonely hunter" />
+    <img src="https://covers.openlibrary.org/b/id/1302957-M.jpg"
+      width="auto" height="265"
+      alt="Book cover of the heart if a lonely hunter" />
+    <img src="https://covers.openlibrary.org/b/id/8327874-M.jpg"
+      width="auto" height="265"
+      alt="Book cover of the heart if a lonely hunter" />
+    <img src="https://covers.openlibrary.org/b/id/7586491-M.jpg"
+      width="auto" height="265"
+      alt="Book cover of the heart if a lonely hunter" />
 
-    <amp-install-serviceworker src="/sw.js" layout="nodisplay"></amp-install-serviceworker>
+    <script src="bundle.min.js"></script>
+    <script src="/sw.js"></script>
   </body>
 </html>
