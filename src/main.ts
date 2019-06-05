@@ -35,20 +35,25 @@ const langs: countryCodes[] =
   ['Nederlands',      ['nl-NL']],
 ];
 
-const select_language = document.getElementById('select_language');
+const emptyElement = {
+  style: {
+    display: '',
+  },
+};
+const select_language = document.getElementById('select_language') || emptyElement;
+const start_button = document.getElementById('start_button') || emptyElement;
 
 showInfo('info_start');
 
-const create_email = false;
-const final_transcript = '';
-const recognizing = false;
-var ignore_onend;
-var start_timestamp;
+let final_transcript: string = '';
+let recognizing: boolean = false;
+let ignore_onend: boolean;
+let start_timestamp: number;
 if (!('webkitSpeechRecognition' in window)) {
   upgrade();
 } else {
   start_button.style.display = 'inline-block';
-  var recognition = new webkitSpeechRecognition();
+  const recognition = new window.webkitSpeechRecognition();
   recognition.continuous = true;
   recognition.interimResults = true;
 
@@ -96,10 +101,6 @@ if (!('webkitSpeechRecognition' in window)) {
       range.selectNode(document.getElementById('final_span'));
       window.getSelection().addRange(range);
     }
-    if (create_email) {
-      create_email = false;
-      createEmail();
-    }
   };
 
   recognition.onresult = function(event) {
@@ -136,39 +137,6 @@ function capitalize(s) {
   return s.replace(first_char, function(m) { return m.toUpperCase(); });
 }
 
-function createEmail() {
-  var n = final_transcript.indexOf('\n');
-  if (n < 0 || n >= 80) {
-    n = 40 + final_transcript.substring(40).indexOf(' ');
-  }
-  var subject = encodeURI(final_transcript.substring(0, n));
-  var body = encodeURI(final_transcript.substring(n + 1));
-  window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
-}
-
-function copyButton() {
-  if (recognizing) {
-    recognizing = false;
-    recognition.stop();
-  }
-  copy_button.style.display = 'none';
-  copy_info.style.display = 'inline-block';
-  showInfo('');
-}
-
-function emailButton() {
-  if (recognizing) {
-    create_email = true;
-    recognizing = false;
-    recognition.stop();
-  } else {
-    createEmail();
-  }
-  email_button.style.display = 'none';
-  email_info.style.display = 'inline-block';
-  showInfo('');
-}
-
 function startButton(event) {
   if (recognizing) {
     recognition.stop();
@@ -186,7 +154,7 @@ function startButton(event) {
   start_timestamp = event.timeStamp;
 }
 
-function showInfo(s) {
+function showInfo(s: string) {
   if (s) {
     for (var child = info.firstChild; child; child = child.nextSibling) {
       if (child.style) {
@@ -199,14 +167,10 @@ function showInfo(s) {
   }
 }
 
-var current_style;
-function showButtons(style) {
+let current_style: string;
+const showButtons = (style: string): void => {
   if (style == current_style) {
     return;
   }
   current_style = style;
-  copy_button.style.display = style;
-  email_button.style.display = style;
-  copy_info.style.display = 'none';
-  email_info.style.display = 'none';
-}
+};
