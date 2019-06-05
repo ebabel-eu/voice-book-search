@@ -63,6 +63,7 @@ The following pages have been useful in learning how to write the code in this r
 - [AMP URL and Code Validator](https://search.google.com/test/amp)
 - [AMP Guides](https://amp.dev/documentation/guides-and-tutorials/start/create/basic_markup?format=websites)
 - [AMP YouTube channel](https://www.youtube.com/watch?v=OO9oKhs80aI&list=PLXTOW_XMsIDQf5mXiTT6MhdYluziN7dwP&index=4)
+- [Create a custom AMP component](https://codelabs.developers.google.com/codelabs/creating-your-first-amp-component/index.html?index=..%2F..index#1)
 
 ### Web Speech
 - [Webspeech Demo](https://github.com/googlearchive/webplatform-samples/tree/master/webspeechdemo)
@@ -73,7 +74,7 @@ The following pages have been useful in learning how to write the code in this r
 - Search with voice (or plain text in input).
 - Web components (in Typescript).
 - Infinite carousel (no third party dependency, native only).
-- Stop scrolling on blur of page.
+- Stop scrolling on blur of page. See event `slideChange` triggered when slide changes. I could check if the page is in focus and allow the slide change, or return false and block the slide change if the page is on blur.
 - Display book covers (-S, -M, or -L) depending on size of viewport.
 - Load images lazily as the carousel scrolls with a small buffer of a few images.
 - Relative time of a moment when the last search query was performed should be updatedautomatically. Display the relative time in a user's preferred language (navigator.language).

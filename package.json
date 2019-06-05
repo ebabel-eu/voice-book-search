@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --coverage && npm run eslint",
     "eslint": "eslint ./src/**/*.ts",
-    "build": "npm run uglifycss",
+    "build": "npm run typescript && npm run uglifycss",
+    "typescript": "tsc -p tsconfig.json",
     "uglifycss": "uglifycss ./src/style.css > ./public/style.min.css"
   },
   "repository": {
@@ -25,6 +26,9 @@
   },
   "homepage": "https://voice-book-search.firebaseapp.com",
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-typescript": "^7.3.3",
     "@types/jest": "^24.0.13",
     "@typescript-eslint/eslint-plugin": "^1.9.0",
     "@typescript-eslint/parser": "^1.9.0",
