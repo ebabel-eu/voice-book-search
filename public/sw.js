@@ -19,6 +19,9 @@ const immutableRequests = [
 
   'https://cdn.ampproject.org/v0.js',
   'https://cdn.ampproject.org/v0/amp-form-0.1.js',
+  'https://cdn.ampproject.org/v0/amp-mustache-0.2.js',
+  'https://cdn.ampproject.org/v0/amp-carousel-0.1.js',
+  'https://cdn.ampproject.org/rtv/011905292322390/v0/amp-auto-lightbox-0.1.js',
   'https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js',
 
   'img/icons/icon-48x48.png',
@@ -29,6 +32,10 @@ const immutableRequests = [
   'img/icons/icon-256x256.png',
   'img/icons/icon-384x384.png',
   'img/icons/icon-512x512.png',
+
+  'img/microphone/mic-animate.gif',
+  'img/microphone/mic-slash.gif',
+  'img/microphone/mic.gif',
 ];
 
 // Once a service worker has successfully installed, it enters the "installed" state.
