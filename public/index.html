@@ -3,11 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Voice Book Search</title>
-
     <link rel="manifest" href="/manifest.json">
-
     <link rel="canonical" href="https://voice-book-search.firebaseapp.com">
-
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="theme-color" content="#ffebcd">
@@ -26,6 +23,9 @@
     <link rel="apple-touch-icon" sizes="256x256" href="/img/icons/icon-256x256.png">
     <link rel="apple-touch-icon" sizes="384x384" href="/img/icons/icon-384x384.png">
     <link rel="apple-touch-icon" sizes="512x512" href="/img/icons/icon-512x512.png">
+
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
   </head>
   <body>
     <header>
@@ -128,11 +128,8 @@
     <img src="https://covers.openlibrary.org/b/id/8327874-M.jpg"
       width="auto" height="265"
       alt="Book cover of the heart if a lonely hunter" />
-    <img src="https://covers.openlibrary.org/b/id/7586491-M.jpg"
-      width="auto" height="265"
-      alt="Book cover of the heart if a lonely hunter" />
 
-    <script src="bundle.min.js"></script>
+    <script src="/bundle.min.js"></script>
     <script src="/sw.js"></script>
   </body>
 </html>

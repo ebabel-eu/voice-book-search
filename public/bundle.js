@@ -1,4 +1,8 @@
 "use strict";
+var _this = this;
+var e = React.createElement;
+// Display a "Like" <button>
+return e('button', { onClick: function () { return _this.setState({ liked: true }); } }, 'Like');
 var select_language = document.getElementById('select_language');
 var select_dialect = document.getElementById('select_dialect');
 var start_button = document.getElementById('start_button');
@@ -116,3 +120,4 @@ var showButtons = function (style) {
     current_style = style;
 };
 start_button.addEventListener('click', startButton);
+//# sourceMappingURL=bundle.js.map

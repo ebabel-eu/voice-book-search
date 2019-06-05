@@ -17,6 +17,9 @@ const immutableRequests = [
   'robots.txt',
   'sitemap.xml',
 
+  'https://unpkg.com/react@16/umd/react.production.min.js',
+  'https://unpkg.com/react-dom@16/umd/react-dom.production.min.js',
+
   'bundle.min.js',
 
   'img/icons/icon-48x48.png',
